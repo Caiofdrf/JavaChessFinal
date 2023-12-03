@@ -5,7 +5,6 @@ import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
-import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,7 +17,10 @@ public class King extends Piece{
     private final static int[] CANDIDATE_MOVE_COORDINATE = {-9, -8, -7, -1, 1, 7, 8, 9};
 
     public King(final Alliance pieceAlliance, final int piecePosition) {
-        super(PieceType.KING, piecePosition, pieceAlliance);
+        super(PieceType.KING, piecePosition, pieceAlliance, true);
+    }
+    public King(final Alliance pieceAlliance, final int piecePosition, final boolean isFirstMove) {
+        super(PieceType.KING, piecePosition, pieceAlliance, isFirstMove);
     }
 
     @Override

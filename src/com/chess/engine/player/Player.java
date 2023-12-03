@@ -33,7 +33,7 @@ public abstract class Player {
                 attackMoves.add(move);
             }
         }
-        return ImmutableList.copyOf(attackMoves);
+        return attackMoves;
     }
 
     private King establishKing() {

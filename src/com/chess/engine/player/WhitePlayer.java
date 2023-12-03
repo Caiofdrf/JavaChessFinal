@@ -6,7 +6,6 @@ import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
 import com.chess.engine.pieces.Piece;
 import com.chess.engine.pieces.Rook;
-import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +16,7 @@ import static com.chess.engine.board.Move.*;
 public class WhitePlayer extends Player{
     public WhitePlayer(final Board board, final Collection<Move> whiteStandartLegalMoves,
                        final Collection<Move> blackStandartLegalMoves) {
-    super(board, whiteStandartLegalMoves, blackStandartLegalMoves);
+        super(board, whiteStandartLegalMoves, blackStandartLegalMoves);
     }
 
     @Override
@@ -42,10 +41,10 @@ public class WhitePlayer extends Player{
                 final Tile rookTile = this.board.getTile(63);
                 if (rookTile.isTileOccupied() && rookTile.getPiece().isFirstMove()){
                     if (Player.calculateAttacksOnTile(61, opponentsLegals).isEmpty() &&
-                        Player.calculateAttacksOnTile(62, opponentsLegals).isEmpty() &&
-                        rookTile.getPiece().getPieceType().isRook()) {
+                            Player.calculateAttacksOnTile(62, opponentsLegals).isEmpty() &&
+                            rookTile.getPiece().getPieceType().isRook()) {
                         kingCastles.add(new KingSideCastleMove(this.board, this.playerKing, 62,
-                                        (Rook) rookTile.getPiece(), rookTile.getTileCoordinate(), 61));
+                                (Rook) rookTile.getPiece(), rookTile.getTileCoordinate(), 61));
                     }
                 }
             }
@@ -54,14 +53,14 @@ public class WhitePlayer extends Player{
                     !this.board.getTile(57).isTileOccupied()){
                 final Tile rookTile = this.board.getTile(56);
                 if (rookTile.isTileOccupied() && rookTile.getPiece().isFirstMove() &&
-                    Player.calculateAttacksOnTile(58, opponentsLegals).isEmpty() &&
-                    Player.calculateAttacksOnTile(59, opponentsLegals).isEmpty() &&
-                    rookTile.getPiece().getPieceType().isRook()) {
+                        Player.calculateAttacksOnTile(58, opponentsLegals).isEmpty() &&
+                        Player.calculateAttacksOnTile(59, opponentsLegals).isEmpty() &&
+                        rookTile.getPiece().getPieceType().isRook()) {
                     kingCastles.add(new QueenSideCastleMove(this.board, this.playerKing, 58,
                             (Rook) rookTile.getPiece(), rookTile.getTileCoordinate(), 59));
                 }
             }
         }
-        return ImmutableList.copyOf(kingCastles);
+        return kingCastles;
     }
 }
