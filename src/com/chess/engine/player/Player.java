@@ -22,7 +22,8 @@ public abstract class Player {
         this.playerKing = establishKing();
         List<Move> legalMovesList = new ArrayList<>(legalMoves);
         legalMovesList.addAll(calculateKingCastles(legalMovesList, opponentMoves));
-        this.legalMoves = legalMovesList;        this.isInCheck = !Player.calculateAttacksOnTile(this.playerKing.getPiecePosition(), opponentMoves).isEmpty();
+        this.legalMoves = legalMovesList;
+        this.isInCheck = !Player.calculateAttacksOnTile(this.playerKing.getPiecePosition(), opponentMoves).isEmpty();
     }
 
     protected static Collection<Move> calculateAttacksOnTile(int piecePosition, Collection<Move> moves) {
